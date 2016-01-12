@@ -1,12 +1,32 @@
+require 'pry'
+require 'test_helper'
 require 'rails_helper'
+require 'spec_helper'
 
-RSpec.describe UsersController, type: :controller do
+class UsersControllerTest < ActionController::TestCase
 
-  describe "GET #—skip-test-unit" do
-    it "returns http success" do
-      get :—skip-test-unit
-      expect(response).to have_http_status(:success)
-    end
-  end
+   RSpec.describe UsersController, type: :controller do  
 
-end
+    # describe "GET #welcome" do
+    #   before(:each) do
+    #     get :welcome
+    #   end
+    #   it "responds successfully" do
+    #     expect(response).to be_success
+    #   end
+
+
+
+    #   it "responds successfully with an HTTP 200 status code" do
+    #     expect(response).to have_http_status(200)
+    #   end
+    #   it "renders the welcome template" do
+    #     expect(response).to render_template(:welcome)
+    #   end
+
+    
+    # end
+
+  end #RSpec
+end #UsersControllerTest
+

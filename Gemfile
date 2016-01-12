@@ -36,24 +36,42 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'rails_12factor', group: :production
 
-group :development, :test do
-  gem 'rspec-rails', '~> 3.0'
-  # gem 'shoulda-matchers', '~> 3.0'
-  gem 'sqlite3' # SI DEJAMOS LA GEMA FUERA EN LA RAIZ NO FUNCIONA CON HEROKU!!!
-  # POR ESO HAY QUE DEJARLO DENTRO DE LOS GRUPOS EN LOS QUE SE USE!!!!!!!!!
+# group :development, :test do
+#   gem 'rspec-rails', '~> 3.0'
+#   # gem 'shoulda-matchers', '~> 3.0'
+#   gem 'sqlite3' # SI DEJAMOS LA GEMA FUERA EN LA RAIZ NO FUNCIONA CON HEROKU!!!
+#   # POR ESO HAY QUE DEJARLO DENTRO DE LOS GRUPOS EN LOS QUE SE USE!!!!!!!!!
 
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+#   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+#   gem 'byebug'
+# end
+
+# group :development do
+
+
+#   gem 'sqlite3' # SI DEJAMOS LA GEMA FUERA EN LA RAIZ NO FUNCIONA CON HEROKU!!!
+#   # POR ESO HAY QUE DEJARLO DENTRO DE LOS GRUPOS EN LOS QUE SE USE!!!!!!!!!
+#   # Access an IRB console on exception pages or by using <%= console %> in views
+#   gem 'web-console', '~> 2.0'
+
+#   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+#   gem 'spring'
+# end
+
+
+
+
+group :development, :test do
+  gem 'guard-rspec', require: false
+  gem 'rspec-rails', '~> 3.0'
+  gem 'factory_girl_rails'
 end
 
-group :development do
-
-
-  gem 'sqlite3' # SI DEJAMOS LA GEMA FUERA EN LA RAIZ NO FUNCIONA CON HEROKU!!!
-  # POR ESO HAY QUE DEJARLO DENTRO DE LOS GRUPOS EN LOS QUE SE USE!!!!!!!!!
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
-
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+group :test do
+  gem 'shoulda-matchers', '~> 3.0'
+  gem 'faker'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'launchy'
+  gem 'database_cleaner'
 end
