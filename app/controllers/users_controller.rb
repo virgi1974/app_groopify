@@ -6,4 +6,6 @@ class UsersController < ApplicationController
   #   @maps = @user.maps
   #   render 'index'
   # end
+  # def welcome
+  # end
 end
