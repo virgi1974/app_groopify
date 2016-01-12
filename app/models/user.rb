@@ -9,4 +9,6 @@ class User < ActiveRecord::Base
 
   # validates :email, uniqueness: true # no se puede guardar dos campos email iguales
   # validates :password, length: {minimum: 10} #numero minimo de caracteres
+
+  has_many :pets
 end

@@ -31,11 +31,16 @@ RSpec.describe User, type: :model do
       user = FactoryGirl.build(:user,password: "Random2015@random.com",password_confirmation: "Random2015@random.com")
       expect(user.save).to be_falsey
     end
- 
+  end
+
+  describe "user relations" do
+    it "should have many pets" do
+      user = User.reflect_on_association(:pets)
+      user.macro.should == :has_many
+    end
   end
 
 end
-
 
 
 
