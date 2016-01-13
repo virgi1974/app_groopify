@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <h3>WELCOME ---- <%= current_user.name %></h3>
+    <% @pets.each do |pet| %>
+        <div class = "artist">
+          <ul class="text-left">
+            PET OWNER <li> <%= find_user(pet.id) %></li>
+            PET NAME   <li><%= pet.name %></li>
+            <%= link_to("index pets", pets_path(pet)) %>
+          </ul>
+        </div>
+    <% end %>
+  </div>
+</div>

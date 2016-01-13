@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     # current_user_path
     # user_maps_path(resource.id)
-    edit_user_registration_path
+    pets_path
   end
 
   protected

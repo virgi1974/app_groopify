@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def find_user id
+   "unknown" || User.find(id).name
+  end
+
   def flash_message
     check_flash(:alert) || check_flash(:notice)
   end
