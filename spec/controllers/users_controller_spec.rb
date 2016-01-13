@@ -5,7 +5,7 @@ require 'spec_helper'
 
 class UsersControllerTest < ActionController::TestCase
 
-   RSpec.describe UsersController, type: :controller do  
+  RSpec.describe UsersController, type: :controller do  
 
     describe "GET #welcome" do
       before(:each) do
