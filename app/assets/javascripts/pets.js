@@ -1,22 +1,23 @@
 $(document).on('ready',function(){
 
   $(document).on('click','#pet-info',function(event){
-    
+
     event.preventDefault();
     var $button = $(event.currentTarget);
-    var pet_id = $button.attr('name');
+    var petId = $button.attr('name');
+    var logedUserId = parseInt($button.attr('data-user'));
+    
     var data = {
-      pet_id : pet_id
+      petId : petId
     }
 
-    var request = $.get('/pets/' + pet_id ,data);
+    var request = $.get('/pets/' + petId ,data);
 
     request.fail(function () {
       alert('Couldn’t add your comment to the DB');
     });
 
     request.success(function (response) {
-      console.log(response);
       preparePetInfo(response);
       $('#myModal').modal('show');
     }); 
@@ -26,12 +27,25 @@ $(document).on('ready',function(){
       var htmlParts= [
         '<strong>Name </strong><p class="">'+ pet.name + '</p>',
         '<strong>Race </strong><p class="">'+ pet.race + '</p>',
-        '<strong>Age </strong><p class="">'+ pet.age + '</p>',
+        '<strong>Age </strong><p class="">'+ pet.age + '</p>'
       ];
-
+      htmlParts = checkSelfUser(pet,htmlParts);
       $('#pet-details').append(htmlParts.join('\n')); 
     
     };
+      
+    function checkSelfUser(pet,htmlParts){
+      if (pet.id !== logedUserId) {
+        var htmlButtons= [
+        '<a class="btn btn-info btn-block" href="/pets/' +pet.id + '/edit">EDIT</a>',
+        '<a class="btn btn-info btn-block" href="/pets/' +pet.id + '">DELETE</a>'
+        ];
+        return htmlParts.concat(htmlButtons);
+      }else{
+        return htmlParts;
+      };
+    }
+
           
   }); //click','#pet-info
 

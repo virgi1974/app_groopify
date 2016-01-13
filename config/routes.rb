@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 get '/' => 'users#welcome'
 devise_for :users
 
-resources :pets, only: [:index, :show]
+resources :pets, only: [:index, :show, :edit, :destroy]
 # resources :maps, only: [:index, :new, :create, :edit, :update, :destroy, :show]
 
 
