@@ -5,4 +5,11 @@ FactoryGirl.define do
     f.race "doberman"
     f.age 7
   end
+
+  factory :account do
+      name "virgilio"
+     email "virgifp@yahoo.es"
+     password "password"
+     password_confirmation "password"
+   end
 end

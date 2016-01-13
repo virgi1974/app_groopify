@@ -4,13 +4,18 @@ require 'rails_helper'
 require 'spec_helper'
 
 class PetsControllerTest < ActionController::TestCase
-
-  RSpec.describe PetsController, type: :controller do  
+  include Devise::TestHelpers
+ 
+  RSpec.describe PetsController, type: :controller do 
     let(:pet) { FactoryGirl.create(:pet) }
+    login_user
 
     describe "GET #index" do
       before(:each) do
         get :index
+      end
+      it "should have a current_user" do
+        expect(subject.current_user).to_not eq(nil)
       end
       it "responds successfully" do
         expect(response).to be_success
@@ -22,11 +27,10 @@ class PetsControllerTest < ActionController::TestCase
         expect(response).to render_template(:index)
       end
       it "gets all the pets" do
-        get :index
         assigns(:pets).should eq([pet])
       end
-
     end
-  end #RSpec
-end #UsersControllerTest
 
+  end
+  
+end
