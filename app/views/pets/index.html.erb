@@ -6,9 +6,31 @@
           <ul class="text-left">
             PET OWNER <li> <%= find_user(pet.id) %></li>
             PET NAME   <li><%= pet.name %></li>
-            <%= link_to("index pets", pets_path(pet)) %>
+            <a id ="pet-info" class = "btn btn-info btn-block" href="<%= pet_path(pet.id) %>" data-pet="<%= pet.id %>" name="<%= pet.id %>">pet info</a>
           </ul>
         </div>
     <% end %>
   </div>
 </div>
+
+<div id="myModal" class="modal fade " role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 id="modal-title" class="modal-title">ALBUMS</h4>
+      </div>
+      <div class="modal-body">
+        <div id="pet-details"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
