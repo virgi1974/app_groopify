@@ -5,11 +5,19 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do   
 
-  it "has a valid factory" do
-    expect(FactoryGirl.build(:user)).to be_truthy
+  describe "user factory creation" do 
+    it "has a valid factory" do
+      expect(FactoryGirl.build(:user)).to be_truthy
+    end
+    it "creates a name attribute" do
+      expect(FactoryGirl.build(:user).name).to eq("mrnobody")
+    end
+    it "creates an email attribute" do
+      expect(FactoryGirl.build(:user).email).to eq("Nobody123@nobody123.com")
+    end
   end
 
-  describe "validatons" do 
+  describe "validations" do 
     it "is invalid without a name" do
       expect(FactoryGirl.build(:user, name: nil)).to_not be_valid
     end
@@ -28,9 +36,10 @@ RSpec.describe User, type: :model do
       expect(user2.save).to be_falsey
     end
     it "password and password_confirmation must match" do
-      user = FactoryGirl.build(:user,password: "Random2015@random.com",password_confirmation: "Random2015@random.com")
+      user = FactoryGirl.build(:user,password: "R@random.com",password_confirmation: "Random2015@random.com")
       expect(user.save).to be_falsey
     end
+
   end
 
   describe "user relations" do
