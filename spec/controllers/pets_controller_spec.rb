@@ -56,8 +56,29 @@ class PetsControllerTest < ActionController::TestCase
       end
     end
 
-    describe "GET #show_selected_map" do
-     
+    describe "GET #new" do
+      before(:each) do
+        get :new
+      end
+     # it "assigns an empty title and a body to the new article" do
+     #   assigns(:pet).name.should eq nil
+     #   assigns(:pet).race.should eq nil
+     #   assigns(:pet).age.should eq nil
+     # end
+      it "should have a current_user" do
+        expect(subject.current_user).to_not eq(nil)
+      end
+      it "responds successfully" do
+        expect(response).to be_success
+      end
+      it "responds successfully with an HTTP 200 status code" do
+        expect(response).to have_http_status(200)
+      end
+
+      it "renders the :new view" do
+       expect(response).to render_template(:new)
+      end
+   
     end
 
   end

@@ -37,8 +37,8 @@ $(document).on('ready',function(){
     function checkSelfUser(pet,htmlParts){
       if (pet.id !== logedUserId) {
         var htmlButtons= [
-        '<a class="btn btn-info btn-block" href="/pets/' +pet.id + '/edit">EDIT</a>',
-        '<a class="btn btn-info btn-block" href="/pets/' +pet.id + '">DELETE</a>'
+        '<a class="btn btn-warning btn-block" href="/pets/' +pet.id + '/edit">EDIT</a>',
+        '<a class="btn btn-danger btn-block" href="/pets/' +pet.id + '">DELETE</a>'
         ];
         return htmlParts.concat(htmlButtons);
       }else{

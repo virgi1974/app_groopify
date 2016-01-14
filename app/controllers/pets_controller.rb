@@ -16,6 +16,11 @@ class PetsController < ApplicationController
       end
   end
 
+  def new
+    @pet = current_user.pets.new 
+    render 'new'
+  end
+
   def update
   end
 

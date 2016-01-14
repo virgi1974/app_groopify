@@ -1,6 +1,8 @@
 <div class="container">
   <div class="row">
-    <h3>WELCOME ---- <%= current_user.name %></h3>
+    <h3>WELCOME ---- <%= current_user.name %> <%= link_to 'Add a new pet', new_pet_path, class: "btn btn-primary" %> </h3>
+
+
     <% @pets.each do |pet| %>
         <div class = "artist">
           <ul class="text-left">
@@ -27,7 +29,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
       </div>
     </div>
 
