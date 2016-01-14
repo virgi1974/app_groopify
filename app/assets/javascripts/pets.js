@@ -35,10 +35,10 @@ $(document).on('ready',function(){
     };
       
     function checkSelfUser(pet,htmlParts){
-      if (pet.id !== logedUserId) {
+      if (pet.user_id === logedUserId) {
         var htmlButtons= [
         '<a class="btn btn-warning btn-block" href="/pets/' +pet.id + '/edit">EDIT</a>',
-        '<a class="btn btn-danger btn-block" href="/pets/' +pet.id + '">DELETE</a>'
+        '<a data-method="delete" class="btn btn-danger btn-block" href="/pets/' +pet.id + '">DELETE</a>'
         ];
         return htmlParts.concat(htmlButtons);
       }else{

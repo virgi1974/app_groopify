@@ -60,11 +60,6 @@ class PetsControllerTest < ActionController::TestCase
       before(:each) do
         get :new
       end
-     # it "assigns an empty title and a body to the new article" do
-     #   assigns(:pet).name.should eq nil
-     #   assigns(:pet).race.should eq nil
-     #   assigns(:pet).age.should eq nil
-     # end
       it "should have a current_user" do
         expect(subject.current_user).to_not eq(nil)
       end
@@ -81,34 +76,32 @@ class PetsControllerTest < ActionController::TestCase
     end
 
     describe "POST #create" do
-      before(:each) do
-        post :create
+      context "with valid attributes" do
+        let!(:pet) { FactoryGirl.attributes_for(:pet, name: "caniche", race: "chihuaha", age: 33) }
+          it "creates a new pet" do
+            expect{
+              post :create, pet: FactoryGirl.attributes_for(:pet)
+            }.to change(Pet,:count).by(1)
+          end
+          
+          it "redirects to the pet index page" do
+            post :create, pet: FactoryGirl.attributes_for(:pet)
+            expect(response.location).to match('/pets')
+          end
       end
-      # context "with valid attributes" do
-      #   it "creates a new pet" do
-      #     expect{
-      #       post :create, pet: FactoryGirl.attributes_for(:pet)
-      #     }.to change(Pet,:count).by(1)
-      #   end
-        
-      #   it "redirects to the new created pet" do
-      #     post :create, pet: FactoryGirl.attributes_for(:pet)
-      #     response.should redirect_to Pet.all
-      #   end
-      # end
       
-      # context "with invalid attributes" do
-      #   it "does not save the new article" do
-      #     expect{
-      #       post :create, pet: FactoryGirl.attributes_for(:invalid_pet)
-      #     }.to_not change(Pet,:count)
-      #   end
+      context "with invalid attributes" do
+        it "does not save the new pet" do
+          expect{
+            post :create, pet: FactoryGirl.attributes_for(:pet, name: nil, race: "chihuaha", age: 33)
+          }.to_not change(Pet,:count)
+        end
         
-        # it "re-renders the new article view" do
-        #   post :create, article: FactoryGirl.attributes_for(:invalid_article)
-        #   response.should render_template :new
+        # it "re-renders the new pets view" do
+        #   post :create, pet: FactoryGirl.attributes_for(:pet)
+        #   expect(subject).to render_template("pets/new")
         # end
-      # end 
+      end 
     end
 
     describe 'PUT #update' do
@@ -163,6 +156,23 @@ class PetsControllerTest < ActionController::TestCase
       #   end
       # end
 
+    end
+
+    describe 'DELETE destroy' do
+      before :each do
+        @pet = FactoryGirl.create(:pet)
+      end
+
+      it "deletes the contact" do
+        expect{
+          delete :destroy, id: @pet.id        
+        }.to change(Pet,:count).by(-1)
+      end
+        
+      it "redirects to pets#index" do
+        delete :destroy, id: @pet.id 
+        response.should redirect_to pets_url
+      end
     end
 
   end

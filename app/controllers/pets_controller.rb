@@ -35,8 +35,18 @@ class PetsController < ApplicationController
     end
   end
 
-  # def destroy
-  # end
+  def destroy
+# binding.pry
+    @pet = Pet.find(params[:id])
+    
+    if @pet.destroy
+      flash[:notice] = "User was successfully deleted"
+    else
+      flash[:error]  = "Cannot delete current admin"
+    end
+    redirect_to pets_path
+
+  end
 
   # def update
   # end
@@ -44,6 +54,7 @@ class PetsController < ApplicationController
   private
     def pet_params
       params.require(:pet).permit(:name, :race, :age)
+      # params.permit(:name, :race, :age)
     end
 
 end
