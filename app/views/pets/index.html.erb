@@ -1,15 +1,28 @@
+<div class="jumbotron">
+  <div class="container-fluid">
+    <h1 id="pet-img">WELCOME <%= current_user.name %> <%= link_to 'Add a new pet', new_pet_path, class: "btn btn-primary" %> </h1 >
+  </div>
+</div>
+
 <div class="container">
   <div class="row">
-    <h3>WELCOME ---- <%= current_user.name %> <%= link_to 'Add a new pet', new_pet_path, class: "btn btn-primary" %> </h3>
-
-
+  
     <% @pets.each do |pet| %>
-        <div class = "artist">
-          <ul class="text-left">
-            PET OWNER <li> <%= find_user(pet.id) %></li>
-            PET NAME   <li><%= pet.name %></li>
-            <a id ="pet-info" class = "btn btn-info btn-block" href="<%= pet_path(pet.id) %>" data-user="<%= current_user.id %>" name="<%= pet.id %>">pet info</a>
+        <div class = "each-pet">
+          <ul>
+            <li> 
+            PET OWNER 
+              <strong>&nbsp;&nbsp;&nbsp;&nbsp;
+                <%= find_user(pet.user_id) %></li>
+              </strong> 
+            <li>
+            PET NAME 
+              <strong>&nbsp;&nbsp;&nbsp;&nbsp;
+                <%= pet.name %>
+              </li>
+            </strong>
           </ul>
+              <a id ="pet-info" class = "btn btn-info btn-block" href="<%= pet_path(pet.id) %>" data-user="<%= current_user.id %>" name="<%= pet.id %>">pet info</a>
         </div>
     <% end %>
   </div>
@@ -35,5 +48,4 @@
 
   </div>
 </div>
-
 

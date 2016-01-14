@@ -9,10 +9,10 @@
 <body>
 
 <%= render './partials/navbar' %>
-<p> <%= flash_message %> </p> 
-
 
 <%= yield %>
+
+<%= render './partials/errors' %>
 
 </body>
 </html>

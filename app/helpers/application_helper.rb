@@ -1,7 +1,8 @@
 module ApplicationHelper
 
   def find_user id
-   "unknown" || User.find(id).name
+
+   User.find(id).name || "unknown" 
   end
 
   def flash_message
