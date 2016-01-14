@@ -1,3 +1,5 @@
+require 'pry'
+
 class PetsController < ApplicationController
 
   before_action :authenticate_user!
@@ -21,10 +23,27 @@ class PetsController < ApplicationController
     render 'new'
   end
 
-  def update
+  def create
+    @pet = current_user.pets.new(pet_params)
+
+    if @pet.save
+      flash[:notice] = 'Pet created successfully!'
+      redirect_to action: 'index', controller: 'pets', id: current_user.id
+    else
+      flash[:alert] = 'Pet creation failed!'
+      render 'new'
+    end
   end
 
-  def destroy
-  end
+  # def destroy
+  # end
+
+  # def update
+  # end
+
+  private
+    def pet_params
+      params.require(:pet).permit(:name, :race, :age)
+    end
 
 end
