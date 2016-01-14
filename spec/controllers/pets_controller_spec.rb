@@ -105,42 +105,72 @@ class PetsControllerTest < ActionController::TestCase
     end
 
     describe 'PUT #update' do
-      # before :each do
-      #   @pet = FactoryGirl(:pet, name: "random name", race: "random race", age: 2)
-      #   post :update
+      before(:each) do
+        @pet = FactoryGirl.create(:pet)
+      end
+      
+      context "valid attributes" do
+        let(:attr) do 
+          {name: 'new name', race: 'new race', age: 3 }
+        end
+        before(:each) do
+          put :update, id: @pet.id, pet: attr
+          @pet.reload
+        end
+        
+        it "redirects to /pets"  do
+          response.should redirect_to(:pets) 
+        end
+        it "attr name updated"  do
+          expect(@pet.name).to eql(attr[:name])
+        end
+        it "attr name updated checked againstd the db"  do
+          expect(Pet.last.name).to eql(attr[:name])
+        end
+        it "attr race updated"  do
+          expect(@pet.race).to eql(attr[:race])
+        end
+        it "attr race updated checked againstd the db"  do
+          expect(Pet.last.race).to eql(attr[:race])
+        end
+        it "attr age updated"  do
+          expect(@pet.age).to eql(attr[:age])
+        end
+        it "attr age updated checked againstd the db"  do
+          expect(Pet.last.age).to eql(attr[:age])
+        end
+      end
+      
+      context "invalid attributes" do
+        let(:attr) do 
+          {name: 'new name2', race: nil, age: nil }
+        end
+        before(:each) do
+          put :update, id: @pet.id, pet: attr
+          @pet.reload
+        end
 
-      #   # pet.title = "new title"
-      #   # pet.body = "new race"
-      #   # pet.age = 6
-      # end
-      
-      # context "valid attributes" do
-      #   it "located the requested @pet" do
-      #     # binding.pry
-      #     # @pet = Factory(:pet, title: "new title", body: "new body content for the article")
-      #     put :update, id: @pet, pet: FactoryGirl.attributes_for(:pet)
-      #     assigns(:pet).should eq(@pet)      
-      #   end
-    
-        # it "changes @contact's attributes" do
-        #   put :update, id: article, 
-        #     contact: FactoryGirl.attributes_for(:article, title: "new title", body: "new body content for the article")
-        #   @contact.reload
-        #   @contact.firstname.should eq("new title")
-        #   @contact.lastname.should eq("new body content for the article")
-        # end
-    
-        # it "redirects to the updated contact" do
-        #   put :update, id: @contact, contact: Factory.attributes_for(:contact)
-        #   response.should redirect_to @contact
-        # end
-      # end
-      
-      # context "invalid attributes" do
-      #   it "locates the requested @contact" do
-      #     put :update, id: @contact, contact: Factory.attributes_for(:invalid_contact)
-      #     assigns(:contact).should eq(@contact)      
-      #   end
+        it "renders /edit"  do
+          expect(subject).to render_template("pets/edit")
+        end
+        it "attr race is not updated"  do
+          expect(@pet.race).to_not eql(attr[:race])
+        end
+        it "attr race is not updated"  do
+           expect(Pet.last.race).to_not eql(attr[:race])
+        end
+        it "attr name is not updated"  do
+          expect(@pet.name).to_not eql(attr[:name])
+        end
+        it "attr name is not updated"  do
+           expect(Pet.last.name).to_not eql(attr[:name])
+        end
+        it "attr age is not updated"  do
+          expect(@pet.age).to_not eql(attr[:age])
+        end
+        it "attr age is not updated"  do
+           expect(Pet.last.age).to_not eql(attr[:age])
+        end
       
       #   it "does not change @contact's attributes" do
       #     put :update, id: @contact, 
@@ -154,7 +184,7 @@ class PetsControllerTest < ActionController::TestCase
       #     put :update, id: @contact, contact: Factory.attributes_for(:invalid_contact)
       #     response.should render_template :edit
       #   end
-      # end
+      end
 
     end
 

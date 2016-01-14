@@ -8,7 +8,7 @@ FactoryGirl.define do
 
    factory :invalid_pet do |f|
     f.user_id 23
-    f.name ""
+    f.name nil
     f.race "doberman"
     f.age 7
   end

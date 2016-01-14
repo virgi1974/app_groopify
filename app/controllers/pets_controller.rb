@@ -36,7 +36,6 @@ class PetsController < ApplicationController
   end
 
   def destroy
-# binding.pry
     @pet = Pet.find(params[:id])
     
     if @pet.destroy
@@ -45,11 +44,20 @@ class PetsController < ApplicationController
       flash[:error]  = "Cannot delete current admin"
     end
     redirect_to pets_path
-
   end
 
-  # def update
-  # end
+  def edit
+    @pet = Pet.find(params[:id]) 
+  end
+
+  def update
+    @pet = Pet.find(params[:id])
+    if @pet.update(pet_params)
+      redirect_to pets_path
+    else
+      render :edit
+    end  
+  end
 
   private
     def pet_params
