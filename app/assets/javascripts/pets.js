@@ -27,11 +27,11 @@ $(document).on('ready',function(){
       var htmlParts= [
         '<strong>Name </strong><p class="">'+ pet.name + '</p>',
         '<strong>Race </strong><p class="">'+ pet.race + '</p>',
-        '<strong>Age </strong><p class="">'+ pet.age + '</p>'
+        '<strong>Age </strong><p class="">'+ pet.age + '</p>',
       ];
+
       htmlParts = checkSelfUser(pet,htmlParts);
       $('#pet-details').append(htmlParts.join('\n')); 
-    
     };
       
     function checkSelfUser(pet,htmlParts){

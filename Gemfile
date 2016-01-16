@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem "paperclip", "~> 4.3"
+
 gem 'pry'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
@@ -71,7 +73,6 @@ group :test do
   gem 'shoulda-matchers', '~> 3.0'
   gem 'faker'
   gem 'capybara'
-  gem 'guard-rspec'
   gem 'launchy'
   gem 'database_cleaner'
 end

@@ -6,24 +6,31 @@
 
 <div class="container">
   <div class="row">
-  
     <% @pets.each do |pet| %>
-        <div class = "each-pet">
-          <ul>
-            <li> 
-            PET OWNER 
-              <strong>&nbsp;&nbsp;&nbsp;&nbsp;
-                <%= find_user(pet.user_id) %></li>
-              </strong> 
-            <li>
-            PET NAME 
-              <strong>&nbsp;&nbsp;&nbsp;&nbsp;
-                <%= pet.name %>
-              </li>
-            </strong>
-          </ul>
-              <a id ="pet-info" class = "btn btn-info btn-block" href="<%= pet_path(pet.id) %>" data-user="<%= current_user.id %>" name="<%= pet.id %>">pet info</a>
-        </div>
+    <div class="col-md-3">
+      
+
+      <div class = "each-pet">
+        <ul>
+          <li> 
+          PET OWNER 
+            <strong>&nbsp;&nbsp;&nbsp;&nbsp;
+              <%= find_user(pet.user_id) %></li>
+            </strong> 
+          <li>
+          PET NAME 
+            <strong>&nbsp;&nbsp;&nbsp;&nbsp;
+              <%= pet.name %>
+            </li>
+          </strong>
+        </ul>
+          <a id ="pet-info" class = "btn btn-info btn-block" href="<%= pet_path(pet.id) %>" data-user="<%= current_user.id %>" name="<%= pet.id %>">pet info</a>
+        <%= image_tag pet.avatar.url(:thumb),class: "img-thumb" %>
+      </div>
+      
+    </div>
+
+      
     <% end %>
   </div>
 </div>
@@ -39,6 +46,7 @@
       </div>
       <div class="modal-body">
         <div id="pet-details">
+         
         </div>
       </div>
       <div class="modal-footer">
