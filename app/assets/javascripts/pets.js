@@ -14,7 +14,7 @@ $(document).on('ready',function(){
     var request = $.get('/pets/' + petId ,data);
 
     request.fail(function () {
-      alert('Couldn’t add your comment to the DB');
+      alert('Couldn’t get that pet from the DB');
     });
 
     request.success(function (response) {
@@ -25,9 +25,9 @@ $(document).on('ready',function(){
     function preparePetInfo(pet){
       $('#pet-details').empty();   
       var htmlParts= [
-        '<strong>Name </strong><p>'+ pet.name + '</p>',
-        '<strong>Race </strong><p>'+ pet.race + '</p>',
-        '<strong>Age </strong><p>'+ pet.age + '</p>',
+        '<strong>Name </strong><p class="colored">'+ pet.name + '</p>',
+        '<strong>Race </strong><p class="colored">'+ pet.race + '</p>',
+        '<strong>Age </strong><p class="colored">'+ pet.age + '</p>',
       ];
 
       htmlParts = checkSelfUser(pet,htmlParts);

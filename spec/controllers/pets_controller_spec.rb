@@ -51,8 +51,12 @@ class PetsControllerTest < ActionController::TestCase
       it 'responds with JSON' do
         expect(response.header['Content-Type']).to include 'application/json'
       end
-      it "the returned json-map has 12 fields" do
-        expect(@data.entries.count).to eq(7)
+      it "the returned pet has 12 fields" do
+        # expect(@data.entries.count).to eq(7)
+
+        # paperclip adds 4 avatar fields to the model
+        expect(@data.entries.count).to eq(11)
+
       end
     end
 
@@ -83,10 +87,12 @@ class PetsControllerTest < ActionController::TestCase
               post :create, pet: FactoryGirl.attributes_for(:pet)
             }.to change(Pet,:count).by(1)
           end
-          
           it "redirects to the pet index page" do
             post :create, pet: FactoryGirl.attributes_for(:pet)
             expect(response.location).to match('/pets')
+          end
+          it "redirects to the pet index page" do
+            Post.should_receive(:save_attached_files).and_return(true)
           end
       end
       

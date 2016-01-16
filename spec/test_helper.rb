@@ -3,6 +3,7 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'rspec/rails'
 require 'rspec/autorun'
+require "paperclip/matchers"
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
@@ -17,6 +18,16 @@ end
 class ActiveSupport::TestCase
   fixtures :all
 end
+
+# class PetTest < ActiveSupport::TestCase
+#   should have_attached_file(:avatar)
+#   should validate_attachment_presence(:avatar)
+#   # should validate_attachment_content_type(:avatar).
+#   #              allowing('image/png', 'image/gif').
+#   #              rejecting('text/plain', 'text/xml')
+#   # should validate_attachment_size(:avatar).
+#   #              less_than(2.megabytes)
+# end
 
 
 

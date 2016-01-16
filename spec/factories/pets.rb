@@ -4,6 +4,9 @@ FactoryGirl.define do
     f.name "blackie"
     f.race "doberman"
     f.age 7
+    avatar File.new(Rails.root + 'spec/factories/images/superman.png') 
+
+    # avatar File.new(Rails.root + 'spec/factories/images/rails.png')
   end
 
    factory :invalid_pet do |f|
@@ -19,4 +22,5 @@ FactoryGirl.define do
      password "password"
      password_confirmation "password"
    end
+
 end

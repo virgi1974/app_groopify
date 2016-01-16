@@ -1,10 +1,23 @@
+#modal-title {
+  background-color: #00ADFF;
+
+}
+.colored {
+  color: #5695C1;
+  font-size: 1.5em;
+}
 /*------  general tags ---------*/
 ul {
   list-style-type: none;
   margin: 0;
 }
+/*------  modals ---------*/
+
 body{
   background-color: #E5E5E5 !important;
+  border-radius: 7px;
+  width: 78%;
+  margin: auto;
 }
 label{
   font-size: 2em;
