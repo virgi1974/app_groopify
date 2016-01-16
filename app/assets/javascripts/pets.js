@@ -25,9 +25,9 @@ $(document).on('ready',function(){
     function preparePetInfo(pet){
       $('#pet-details').empty();   
       var htmlParts= [
-        '<strong>Name </strong><p class="">'+ pet.name + '</p>',
-        '<strong>Race </strong><p class="">'+ pet.race + '</p>',
-        '<strong>Age </strong><p class="">'+ pet.age + '</p>',
+        '<strong>Name </strong><p>'+ pet.name + '</p>',
+        '<strong>Race </strong><p>'+ pet.race + '</p>',
+        '<strong>Age </strong><p>'+ pet.age + '</p>',
       ];
 
       htmlParts = checkSelfUser(pet,htmlParts);
@@ -45,9 +45,6 @@ $(document).on('ready',function(){
         return htmlParts;
       };
     }
-
           
   }); //click','#pet-info
-
-
 });//document-ready
