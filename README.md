@@ -39,19 +39,21 @@ The 1-->n relation between the User and Pet model is considered. I didn`t nested
 ```AJAX
 I only did one Ajax call, in order to get the details of a pet. I implemented the functionality of adding or not the Edit/Delete buttons of the Pet instance in the javaScript file, by checking first the currentuser id against the user id of the pet owner. I re-construct the html and append it with JQuery. I show the details of the pet in a modal window.```
 
-**SUMMARY**
+###SUMMARY - Up´s & Down´s
 
 
-**Up´s & Down´s**
+```TESTING
+I´m happy to be able to use gems I didn´t work with before, such as Factorygirl or Paperclip.```
 
-  - **TESTING**  ```I´m happy to be able to use gems I didn´t work with before, such as Factorygirl or Paperclip.```
-  - **table_name**  ```At the moment all the info is in a table called "ufo", to be typed in the field.```
-  - **PAPERCLIP**  ```I used the Gem in the project as suggested, but I´m not happy with the result. Though I followed several tutorials and blogs I didn´t understand properly the way it stores the files, and access it later on. This is a task to be done in the future. Anyway, I managed to load-show the files.```
-  - **EDIT FUNCTION**  ``In the last part of the project, as I added Paperclip, the EDIT functionality finished working properly. I think is a problem with the form strong params, though for the creation of a new Pet is working ok.
-  If you Git Check to a previous commit you can see that the EDIT function the exercice included was working perfectly, and was just by adding Paperclip that started failing. ```
+```PAPERCLIP
+I used the Gem in the project as suggested, but I´m not happy with the result. Though I followed several tutorials and blogs I didn´t understand properly the way it stores the files, and access it later on. This is a task to be done in the future. Anyway, I managed to load-show the files.```
 
-```You can now get a preview of your map or store it.```
+```EDIT FUNCTION
+In the last part of the project, as I added Paperclip, the EDIT functionality finished working properly. I think is a problem with the form strong params, though for the creation of a new Pet is working ok.
+  If you Git Check to a previous commit you can see that the EDIT function the exercice included was working perfectly, and was just by adding Paperclip that started failing.```
 
+```AJAX
+I only did one Ajax call, in order to get the details of a pet. I implemented the functionality of adding or not the Edit/Delete buttons of the Pet instance in the javaScript file, by checking first the currentuser id against the user id of the pet owner. I re-construct the html and append it with JQuery. I show the details of the pet in a modal window.```
 
 ###Behind the scene Technology / Frameworks
 **Platform`s backend** is done with Ruby on Rails
