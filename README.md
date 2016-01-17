@@ -24,7 +24,7 @@ All the gems/frameworks required for the exercice were integrated in the app.*
 
 5.  ```The PAPERCLIP gem was added at the end, to load thumbnails of the pets```
 
-**Key points**
+###Key points
 
 
 **TESTING**
@@ -42,7 +42,7 @@ Same thing when I added Paperclip, because added some extra fields to the model 
 Though the theory of the MVC states that the logic should be in the model side,
 given the easiness of the project, I prefered an easier approach, keeping the funcionality 
 for all the CRUD operations in the Controller. Further logic should be implemented in the Model. 
-I consider that for the purpose of the es¡xercice the Controller is thin enough. 
+I consider that for the purpose of the exercice the Controller is thin enough. 
 
 **RELATIONS BETWEEN MODELS**
 
@@ -56,26 +56,31 @@ I implemented the functionality of adding or not the Edit/Delete buttons
 of the Pet instance in the javaScript file,
 by checking first the currentuser id against the user id of the pet owner. 
 I re-construct the html and append it with JQuery. I show the details of the pet in a modal window.
+Other Ajax calls could have been implemented on the click`s of other buttons.
 
 ###SUMMARY - Up´s & Down´s
 
 **TESTING**
 
 I´m happy to be able to use gems I didn´t work with before, such as Factorygirl or Paperclip.
+I tested Models, Controllers and routes.
+Next Gem I'd like to be used in a project like this would be Capybara, which I still don't use.
 
 **PAPERCLIP**
 
 I used the Gem in the project as suggested, but I´m not happy with the result. 
-Though I followed several tutorials and blogs I didn´t understand properly the way it stores the files,
-and access it later on. This is a task to be done in the future. Anyway, I managed to load-show the files.
+Though I followed several tutorials and blogs I didn´t understand properly the way it stores the files or
+the function of the different vars to be configured (url, default_url, path...). 
+This is a task to be done in the future.
+I'm still glad I managed to load-show the thumbnails of the created pets.
 
 **EDIT FUNCTION**
 
 In the last part of the project, as I added Paperclip, the EDIT functionality finished working properly.
 I think is a problem with the form strong params, though for the creation of a new Pet is working ok.
-  If you Git Check to a previous commit you can see that the EDIT function the exercice included was 
-  working perfectly,
-  and was just by adding Paperclip that started failing.
+If you Git Check to a previous commit you can see that the EDIT function the exercice included was 
+working perfectly,
+and was just by adding Paperclip that started failing.
 
 **AJAX**
 
@@ -84,5 +89,19 @@ I implemented the functionality of adding or not the Edit/Delete buttons
 of the Pet instance in the javaScript file, by checking first the currentuser id
 against the user id of the pet owner.
 I re-construct the html and append it with JQuery.
-I show the details of the pet in a modal window.
+Pet's details shown in a modal window.
 
+**DEVISE MODIFICATIONS**
+
+I customized the sign_in/sign_up devise forms with a different css style. I also deleted some of the tags that Devise includes by default, such as links to sign_in/up, to make thouse actions only available through the nav-bar.
+The ramining actions of the Devise gem, such as mailing were not considered to be part of the exercice.
+
+
+**REFACTOR**
+
+A project like this with few methods implemented is difficult to be refactored. I still could have put something else in the models, but I stated before I think the Controller keeps being thin enough the way I wrote it.
+
+**HTML / CSS**
+
+I added some style classes and styles, but it wasn't the main purpose of the app.
+I tried to make all the html as simple end reusable as possible. I used templates for the shared forms, and also isolated files for nav-bar's and errors.
