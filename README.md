@@ -20,30 +20,34 @@ I used RSPEC as asked, and also FACTORYGIRL upon it, for a better solution.```
 
 3.  ```The framework used for the front-end was BOOTSTRAP.```
 
-4.  ```The AJAX called asked to be used was done in the show action, in which the user clicks to get the file of a specific pet. The construction of the responded data was included in a modal view via javascript + Html dinamically.```
+4.  ```The AJAX called asked to be used was done in the show action, in which the user clicks to get the file 
+    of a specific pet. The construction of the responded data was included in a modal view via javascript + Html dinamically.```
 
 5.  ```The PAPERCLIP gem was added at the end, to load thumbnails of the pets```
 
-###Key points
+**Key points**
 
 
-```TESTING
+1. ```TESTING
 Because of the different gems used in the project, as I added each of them,
-for the validations already tested, I had to add a new layer upon them to make the tests keep working effectively.
-I`m talking about FactoryGirl, Devise and Paperclip, additions.The integration of Devise, to make all the logic of the Pet Model working with the condition of User being logged in was difficult to achieve.
+for the validations already tested, I had to add a new layer upon them to make the tests keep
+working effectively.
+I`m talking about FactoryGirl, Devise and Paperclip, additions.
+The integration of Devise, to make all the logic of the Pet Model working with the condition
+of User being logged in  was difficult to achieve.
 Same thing when I added Paperclip, because added some extra fields to the model attached to.```
 
-```MODEL vs CONTROLLER
+2. ```MODEL vs CONTROLLER
 Though the theory of the MVC states that the logic should be in the model side,
 given the easiness of the project, I prefered an easier approach, keeping the funcionality 
 for all the CRUD operations in the Controller. Further logic should be implemented in the Model. 
 I consider that for the purpose of the es¡xercice the Controller is thin enough. ```
 
-```RELATIONS BETWEEN MODELS
+3. ```RELATIONS BETWEEN MODELS
 The 1-->n relation between the User and Pet model is considered. 
 I didn`t nested the routes of both models cause the exercice didn´t say we had to.```
 
-```AJAX
+4. ```AJAX
 I only did one Ajax call, in order to get the details of a pet. 
 I implemented the functionality of adding or not the Edit/Delete buttons 
 of the Pet instance in the javaScript file,
