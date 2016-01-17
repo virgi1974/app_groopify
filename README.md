@@ -63,7 +63,8 @@ Other Ajax calls could have been implemented on the click`s of other buttons.
 **TESTING**
 
 I´m happy to be able to use gems I didn´t work with before, such as Factorygirl or Paperclip.
-I tested Models, Controllers and routes.
+The only time I couldn´t use TDD was with the Update/Destroy actions, wich I first implemented and later on I Unit tested, because I didn`t find rigth away the correct way to test them.
+I tested Models(validations & relationships), Controllers(methods & rendering/redirections) and routes.
 Next Gem I'd like to be used in a project like this would be Capybara, which I still don't use.
 
 **PAPERCLIP**
@@ -79,8 +80,7 @@ I'm still glad I managed to load-show the thumbnails of the created pets.
 In the last part of the project, as I added Paperclip, the EDIT functionality finished working properly.
 I think is a problem with the form strong params, though for the creation of a new Pet is working ok.
 If you Git Check to a previous commit you can see that the EDIT function the exercice included was 
-working perfectly,
-and was just by adding Paperclip that started failing.
+working perfectly, and was just by adding Paperclip that started failing.
 
 **AJAX**
 
